@@ -1,0 +1,8 @@
+
+// <Imagens img={img3}position={[2.4, 2.0, 0]}/>
+////<Box position={[-2.2, 2.0, 0]} />
+//   <Image position={[-2.2, 2.0, 0]}   />
+//  <NovaImg img = {img1} position= {[-2.2, 2.0, 0]} />
+       // <img src={img1} />
+       // <Box img= {img1} position={[-2.2, 2.0, 0]} />
+       // <Imagens img={img2} />
