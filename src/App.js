@@ -1,6 +1,8 @@
 import React, {  useState,useEffect ,useRef,useLayoutEffect}from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Link as ScrollLink, Element } from 'react-scroll';
+import { FaInstagram, FaFacebook, FaYoutube } from 'react-icons/fa';
+
 import 'swiper/css';
 import './App.css';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
@@ -9,7 +11,7 @@ import { OrbitControls,useGLTF,Text  } from '@react-three/drei';
 import Gsaplogic from './Component3D/Gsaplogic';
 import Imagens from './Component3D/Imagens';
 import { useFrame } from '@react-three/fiber';
-import img6 from './assets/img6.png'
+import img6 from './assets/capa.png'
 import img7 from './assets/img7.png'
 
 
@@ -18,13 +20,34 @@ import img7 from './assets/img7.png'
 
 function App() {
   const [rotateModel, setRotateModel] = useState(false);
-
-  
   const el = useRef();
   const tl = useRef();
   const [cameraControlsActive, setCameraControlsActive] = useState(false);
   const [model, setModel] = useState(null);
+  const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 1080);
+  const [modelScale, setModelScale] = useState([0.7, 0.7, 0.7]); // Estado para controlar a escala do modelo
+
   
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth <= 1080);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+ // Lógica para ajustar a escala do modelo quando a tela for reduzida para 600px de largura
+ useEffect(() => {
+  if (isMobileView) {
+    setModelScale([0.2, 0.2, 0.2]); // Reduz a escala para 50% quando a tela for menor que 600px
+  } else {
+    setModelScale([0.7, 0.7, 0.7]); // Volta para a escala original quando a tela for maior que 600px
+  }
+}, [isMobileView]);
+  
+
 
 
 
@@ -64,8 +87,9 @@ function App() {
 
   return (
     <div className="App">
-
-
+      <div className='img-capa'>
+      <img src={img6} alt="Capa"/>
+      </div>
 <header className="testa">
         <div>HX-48 Oficina e Preparações</div>
         <div className="nav-links">
@@ -119,35 +143,50 @@ Não importa se você está procurando aumentar a potência do seu carro, melhor
 Visite-nos hoje mesmo e descubra como podemos transformar o seu veículo em uma máquina de alto desempenho!
 
 </tex>
+
+{isMobileView && (
+          <button className="toggle-controls-button" onClick={toggleCameraControls}>
+            {cameraControlsActive ? "Desativar Controle de Órbita" : "Ativar Controle de Órbita"}
+          </button>
+        )}
 </Element>
 
       <Canvas className="ob3D-container"  style={{ width: '2800px', height: '2000px' }}  
-        onMouseEnter={() => setCameraControlsActive(true)}
-        onMouseLeave={() => setCameraControlsActive(false)}> 
+        onMouseEnter={() => !isMobileView && setCameraControlsActive(true)} 
+        onMouseLeave={() => !isMobileView && setCameraControlsActive(false)}
+        
+        > 
   <ambientLight intensity={Math.PI / 2} />
   <spotLight position={[-10, -10, -10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
   <pointLight position={[10, 10, 10]} decay={0} intensity={Math.PI} />
   {cameraControlsActive && <OrbitControls />}
-  {model && <primitive object={model} position={[0.10, -7.0, -4]} rotation={[0, Math.PI / 2, 0]}  scale={[0.7, 0.7, 0.7]} />}
+  {model && <primitive object={model} position={[0.10, -7.0, -4]} rotation={[0, Math.PI / 2, 0]}  scale={modelScale}     />}
 
 </Canvas>
 
+
 </div>
 
-
+<div className='gsap'>
 <Element name="section2" className="section">
         
         <Gsaplogic/>
       </Element>
+      </div>
 
-
- 
+       <div className='cntt'>
       <Element name="section3" className="section">
-     
+      <div className='Icons'>
         <h1 className='text-init'>CONTATOS</h1>
-      </Element>
+        <div className='icon-container'>
+          <FaInstagram className='icon' />
+          <FaFacebook className='icon' />
+          <FaYoutube className='icon' />
+        </div>
+      </div>
+    </Element>
   
-
+    </div>
     </div>
 
     

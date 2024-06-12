@@ -1,8 +1,6 @@
 import React, {  useState,useEffect ,useRef,useLayoutEffect}from 'react';
 import { gsap } from 'gsap'
 import './Gsaplogic.css'
-
-
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import relogioPretoImg from '../assets/relogio-preto.svg'
 import relogioRoseImg from '../assets/a3.png'
@@ -57,21 +55,24 @@ function Gsaplogic(){
       })
       .fromTo("#model-1", {
         opacity: 0,
-        y: 160,
+        y: 260,
       }, {
         opacity: 1,
         y: 0
       })
       .fromTo("#model-2", {
         opacity: 0,
-        y: 160,
+        y: 360,
       }, {
         opacity: 1,
-        y: 0
+        y: 0,
+      
+        }, {
       })
       .fromTo("#model-3", {
         opacity: 0,
-        y: 160,
+        y: 560,
+       
       }, {
         opacity: 1,
         y: 0
@@ -99,19 +100,19 @@ function Gsaplogic(){
       </section>
 
       <section className="models-container">
-        <h2 className="title">Os melhores serviços vc enconttra Aqui</h2>
+        <h2 className="title">Os melhores serviços voce encontra Aqui</h2>
 
         <div className="models-content" ref={el}>
           <div className="models-item" id="model-1">
             <img src={img2} alt="Relogio Preto" />
-            <span className="models-tag">Novo</span>
+            <span className="models-tag">Preventiva</span>
             <h4 className="models-title">Serviços de Qualidade</h4>
             <p className="models-description">Revisoes primarias a partir de : <strong>R$ 399</strong></p>
           </div>
 
           <div className="models-item" id="model-2">
             <img src={relogioRoseImg} alt="Relogio Rose" />
-            <span className="models-tag">Novo</span>
+            <span className="models-tag">Melhores Preços</span>
             <h4 className="models-title">Aqui vc encontra os Melhores 
             preços do Mercado</h4>
             <p className="models-description">Troca de oleo a partir de :<strong>R$ 159,90</strong></p>
@@ -119,8 +120,8 @@ function Gsaplogic(){
 
           <div className="models-item" id="model-3">
             <img src={relogioUltraImg} alt="Relogio Ultra" />
-            <span className="models-tag">Novo</span>
-            <h4 className="models-title">Profissionais Mais capacitados</h4>
+            <span className="models-tag">Mais Capacitados</span>
+            <h4 className="models-title"> Melhores Profissionais do Mercado</h4>
             <p className="models-description">Agende o seu horario </p>
           </div>
         </div>
@@ -128,12 +129,12 @@ function Gsaplogic(){
       </section>
 
       <div className="area-model">
-        <h1>ITEM 3</h1>
+        
         <img src={img3}/>
       </div>
       
       <div className="area-model">
-        <h1>ITEM 4</h1>
+        
         <img src={img4}/>
       </div>
     </div>

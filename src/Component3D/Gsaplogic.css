@@ -43,7 +43,7 @@
   .relogio{
     width: 100%;
     max-width: 400px;
-    transform: translateX(-1900px) rotate(180deg);
+    transform: translateX(-1900px) rotate(130deg);
     opacity: 0;
   
   }
@@ -118,4 +118,23 @@
     margin-top: 290px;
     font-size: 58px;
   }
+
+  /* Media Query para 600px */
+@media screen and (max-width: 1080px) {
+  .models-content {
+    flex-direction: column; 
+    align-items: center; 
+  }
+
+  .models-item {
+    margin-bottom: 20px; 
+  }
+  .area-model {
+    height: auto; 
+    margin: 10px; 
+    margin-top: 25px; 
+    padding: 10px; 
+  }
+}
+
  

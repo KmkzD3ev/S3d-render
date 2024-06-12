@@ -1,19 +1,30 @@
-/* Estilos para o elemento .App */
+
 .App {
   position: absolute; 
   top: 0;
   left: 0;
   width: 100%;
   height: 120%;
-  background-image: url('./assets/capa.png');
-  background-size: cover; /* Para cobrir todo o contêiner */
-  background-position: center; /* Para centralizar a imagem */
+  background-size: cover; 
+  background-position: center; 
   color: rgb(255, 255, 255);
   background-position: center 15%;
   margin: 0;
   padding: 0;
   border: 1px solid black;
  
+}
+
+.img-capa {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.img-capa img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; 
 }
 .container-canvas{
   padding: 100px;
@@ -30,8 +41,6 @@
  
 }
 
-
-
 .ob3D-container {
   width: 100%;
   height: 100%;
@@ -42,11 +51,14 @@
   align-items: center;
   justify-content: center;
   background-color: transparent;
-  margin-left: 950px;
+  margin-left: 850px;
   z-index: 2; 
   cursor: pointer; 
  
 
+}
+.text-header{
+  font-style: italic;
 }
 
 .ob3D-container img {
@@ -63,19 +75,26 @@
 font-style: italic;
 }
 
-
-
-@media screen and (max-width: 768px) {
-  .ob3D-container {
-    /* Outros estilos existentes... */
-    margin-left: auto; /* Adicionada */
-    margin-right: auto; /* Adicionada */
-    margin-top: 900px;
-  }
+.Icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
+.icon {
+  font-size: 40px; 
+  margin-right: 10px; 
+}
 
+.text-init{
+  margin-right: 15px;
+}
 
 
 .testa{
@@ -85,7 +104,7 @@ font-style: italic;
   display: flex;
   font-size: 48px;
   justify-content: space-between;
-  margin-top: 1100px;
+  margin-top: 0px;
   
 }
 
@@ -97,14 +116,112 @@ font-style: italic;
 }
 
 .nav-links span {
-  cursor: pointer; /* Mostra que os itens são clicáveis */
+  cursor: pointer;
 }
 .controles-texto-pequeno {
-  font-size: 8px; /* Tamanho menor para o texto dos controles */
+  font-size: 8px; 
+}
+
+.toggle-controls-button {
+  position: absolute;
+  bottom: 5100px;
+  right: 280px;
+  padding: 10px 20px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  z-index: 5000; 
 }
 
 
 
+
+
+/* Responsividade para telas menores */
+@media screen and (max-width: 1080px) {
+  .App {
+    position: relative; 
+    height: auto; 
+    padding: 10px;
+    background-position: center; 
+  }
+
+  .toggle-controls-button {
+    display: block;
+  }
+  
+  .img-capa {
+    width: 100%;
+    height: auto;
+  }
+
+  .img-capa img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .container-canvas {
+    padding: 10px;
+    width: 100%;
+    height: auto;
+    font-size: 16px; 
+    line-height: 1.5; 
+    margin-top: 10px; 
+  }
+
+  .ob3D-container {
+    position: relative;
+    margin: 0 auto; 
+    transform: translateY(-900px); 
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gsap{
+    margin: -350px auto;
+  
+  }
+
+  .ob3D-container img {
+    margin-left: 0;
+    width: 100%; 
+  }
+
+  .Icons, .icon-container {
+    flex-direction: column; 
+    align-items: center; 
+  }
+
+  .icon {
+    font-size: 30px; 
+    margin-right: 0;
+    margin-bottom: 10px; 
+  }
+
+  .testa {
+    flex-direction: column; 
+    font-size: 24px; 
+    margin-top: 20px; 
+    align-items: center; 
+  }
+
+  .nav-links {
+    flex-direction: column; 
+    gap: 10px; 
+    margin-right: 0;
+  }
+}
+
+.cntt{
+  margin-top: 420px;
+}
 
 
 
